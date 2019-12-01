@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Caloric Information</title>
+
+  <style media="screen">
+
+          table, th, td {
+
+              border: 5px lightgreen;
+              border-style: inset;
+border-collapse: collapse;
+font-size: 30px;
+padding: 10px;
+text-align: center;
+color:rgb(0,0,80);
+font-family: monospace;
+}
+h1{
+  color:rgb(0,0,80);
+  font-size: 40px;
+  font-family: fantasy;
+}
+tr{
+  color:black;
+}
+body{
+  background-size: 1500px;
+}
+
+
+  </style>
+  </head>
+  <body background="hfood.jpg">
+    <center><h1><u>Caloric Information</u></h1>
+    <table>
+      <tr>
+        <th>Energy(KCAL)</th>
+        <th>Protein(g)</th>
+        <th>Carbs(g)</th>
+
+        <th>Fats(g)</th>
+
+        <th>Quantity</th>
+        <th>Short desrciption</th>
+        </tr>
+
+          <td id="td2"></td>
+            <td id="td3"></td>
+              <td id="td4"></td>
+
+                    <td id="td7"></td>
+
+                                <td id="td13"></td>
+                                    <td id="td14"></td>
+
+      </table></center>
+    <script type="text/javascript">
+      var url1='https://food-calorie-data-search.p.rapidapi.com/api/search?keyword='
+      var url2=prompt("Enter the Food Name")
+      var url3=`${url2}`
+      var url=url1+url3
+          var xhr= new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.setRequestHeader("x-rapidapi-host", "food-calorie-data-search.p.rapidapi.com");
+      xhr.setRequestHeader("x-rapidapi-key", "23afcb7ce7msh54dd1061c86521cp1c66bejsn627983c745fb");
+
+
+      xhr.onreadystatechange= test
+      function test(){
+        if(this.status=200 && this.readyState==4)
+        {
+          var res_data= JSON.parse(this.responseText);
+          console.log(res_data)
+
+          var b = document.getElementById('td2')
+          b.innerHTML=JSON.stringify(res_data[0].energ_kcal)
+          var c = document.getElementById('td3')
+          c.innerHTML=JSON.stringify(res_data[0].protein)
+          var d = document.getElementById('td4')
+          d.innerHTML=JSON.stringify(res_data[0].carbohydrt)
+
+          var g = document.getElementById('td7')
+          g.innerHTML=JSON.stringify(res_data[0].fa_sat)
+
+          var m = document.getElementById('td13')
+          m.innerHTML=JSON.stringify(res_data[0].gmwt_desc1)
+          var n = document.getElementById('td14')
+          n.innerHTML=JSON.stringify(res_data[0].shrt_desc)
+        }
+      }
+
+
+
+      xhr.send();
+    </script>
+  </body>
+</html>

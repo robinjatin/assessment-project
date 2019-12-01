@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <style media="screen">
+
+      p{
+        background: -webkit-linear-gradient(red,yellow);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      	font-size: 25px;
+      	font-family: Copperplate;
+      }
+        h1{
+          font-size: 40px;
+          background: -webkit-linear-gradient(white,lightyellow);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        	text-align: center;
+        	font-family: cursive;
+        }
+        img{
+        width:700px;
+        height:400px;
+        border: 5px white;
+        border-style: dashed;
+        }
+
+        body{
+          background-color: black;
+        }
+    </style>
+
+  </head>
+  <body>
+  <center>  <h1 id="td2"> </h1>
+
+
+             <img class="nature" id="display1" alt=""/>
+             <img class="nature" id="display2" alt=""/>
+             <img class="nature" id="display3" alt=""/>
+             <img class="nature" id="display4" alt=""/>
+             <img class="nature" id="display5" alt=""/>
+             <img class="nature" id="display6" alt=""/>
+             <img class="nature" id="display7" alt=""/>
+             <img class="nature" id="display8" alt=""/>
+             <img class="nature" id="display9" alt=""/>
+
+             </center>
+    <p><u>Latest News:</u></p>  <p id="td1"></p> <p id="td4"></p> <p id="td3"></p> <p id="td10"></p> <p id="td5"></p> <p id="td6"></p> <p id="td7"></p> <p id="td8"></p> <p id="td9"></p>
+
+  <script>
+
+var xhr = new XMLHttpRequest()
+var url1='https://faroo-faroo-web-search.p.rapidapi.com/api?q='
+var url2=prompt("Enter the State Name");
+var url3=`${url2}`
+var url=url1+url3
+xhr.open("GET", url);
+xhr.setRequestHeader("x-rapidapi-host", "faroo-faroo-web-search.p.rapidapi.com");
+xhr.setRequestHeader("x-rapidapi-key", "23afcb7ce7msh54dd1061c86521cp1c66bejsn627983c745fb");
+
+
+  xhr.onreadystatechange = test
+
+
+
+  function test(){
+      if(this.status==200 && this.readyState==4){ //to remove exception
+     var re_data = JSON.parse(this.responseText)
+     console.log(re_data)
+    var e = document.getElementById('td2')
+     e.innerHTML=JSON.stringify(re_data.query);
+     var pre=document.getElementById('td1')
+     pre.innerHTML=JSON.stringify(re_data.results[1].kwic)
+     var pre1=document.getElementById('td4')
+     pre1.innerHTML=JSON.stringify(re_data.results[2].kwic)
+     var pre2=document.getElementById('td3')
+     pre2.innerHTML=JSON.stringify(re_data.results[3].kwic)
+     var pre3=document.getElementById('td10')
+     pre3.innerHTML=JSON.stringify(re_data.results[4].kwic)
+     var pre4=document.getElementById('td5')
+     pre4.innerHTML=JSON.stringify(re_data.results[5].kwic)
+     var pre5=document.getElementById('td6')
+     pre5.innerHTML=JSON.stringify(re_data.results[6].kwic)
+     var pre6=document.getElementById('td7')
+     pre6.innerHTML=JSON.stringify(re_data.results[7].kwic)
+     var pre7=document.getElementById('td8')
+     pre7.innerHTML=JSON.stringify(re_data.results[8].kwic)
+     var pre8=document.getElementById('td9')
+     pre8.innerHTML=JSON.stringify(re_data.results[9].kwic)
+     var img_url=re_data.results[1].iurl;
+     var get_tag=document.getElementById('display1')
+     get_tag.setAttribute('src',img_url)
+     var img_url2=re_data.results[2].iurl;
+     var get_tag2=document.getElementById('display2')
+     get_tag.setAttribute('src',img_url2)
+     var img_url3=re_data.results[3].iurl;
+     var get_tag3=document.getElementById('display3')
+     get_tag3.setAttribute('src',img_url3)
+     var img_url4=re_data.results[4].iurl;
+     var get_tag4=document.getElementById('display4')
+     get_tag4.setAttribute('src',img_url4)
+     var img_url5=re_data.results[5].iurl;
+     var get_tag5=document.getElementById('display5')
+     get_tag5.setAttribute('src',img_url5)
+     var img_url6=re_data.results[6].iurl;
+     var get_tag6=document.getElementById('display6')
+     get_tag6.setAttribute('src',img_url6)
+     var img_url7=re_data.results[7].iurl;
+     var get_tag7=document.getElementById('display7')
+     get_tag7.setAttribute('src',img_url7)
+     var img_url8=re_data.results[8].iurl;
+     var get_tag8=document.getElementById('display8')
+     get_tag8.setAttribute('src',img_url8)
+     var img_url9=re_data.results[9].iurl;
+     var get_tag9=document.getElementById('display9')
+     get_tag9.setAttribute('src',img_url9)
+     w3.slideshow(".nature", 1000);
+  }
+  }
+
+xhr.send()
+      </script>
+  </body>
+</html>

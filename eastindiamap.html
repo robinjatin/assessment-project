@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+       body{
+         background-color:black;
+       }
+       .city{
+         color:white;
+         font-size: 50px;
+       }
+    </style>
+  </head>
+  <body >
+    <center><h1 class="city">Major Cities of Eastern and North-Eastern India</h1></center>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 22.5726, lng: 88.3639};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5.7,
+          center: uluru
+        });
+        var markers=[{
+          coords:{lat:22.5726, lng:88.3639},
+          content:`<h1>Kolkata</h1>`
+        },{
+          coords:{lat:25.612677, lng: 85.158875},
+          content:`<h1>Patna</h1>`
+        },{
+          coords:{lat:26.1445, lng: 91.7362},
+          content:`<h1>Guwahati</h1>`
+        },{
+          coords:{lat:20.2961, lng: 85.8245},
+          content:`<h1>Bhubaneshwar</h1>`
+        },{
+          coords:{lat:27.4728, lng:94.9120},
+          content:`<h1>Dibrugarh</h1>`
+        }
+
+
+        ]
+      for(var x=0;x<markers.length;x++)
+      {
+        addMarker(markers[x]);
+      }
+        function addMarker(props)
+        {
+          var marker = new google.maps.Marker({
+          position: props.coords ,
+          map: map
+        });
+          if(props.content){
+              var infoWindow = new google.maps.InfoWindow({
+                content:props.content
+              });
+            }
+        marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+        })
+      }
+      }
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxmfw8Wvz1N3Y4ecRJ20zKd_hDB7CZ3kM&callback=initMap"
+    async defer>
+    </script>
+  </body>
+</html>

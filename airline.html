@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flight Info</title>
+    <style media="screen">
+      table, td {
+        border: 5px blue;
+        border-style: ridge;
+        border-collapse: collapse;
+        font-size: 40px;
+        padding: 10px;
+        text-align: center;
+        color:rgb(0,0,80);
+        font-family: serif;
+}
+th {
+  background-color: lightblue;
+  color: black;
+  border: 5px blue;
+  border-style: ridge;
+  font-size: 40px;
+  padding: 10px;
+  backface-visibility: hidden;
+  opacity: 0.6;
+}
+
+h1{
+  font-family: fantasy;
+  font-size: 50px;
+  color: white;
+}
+tr{
+color:white;
+}
+body{
+background-size: 1500px;
+}
+
+    </style>
+  </head>
+  <body background="a380.jpg">
+    <center><h1>Airlines Data</h1>
+      <table>
+        <tr>
+          <th>Alliance</th>
+          <th>IATA Code</th>
+          <th>ICAO Code</th>
+          <th>Name</th>
+          <th>Website</th>
+          </tr>
+          <tr>
+            <td id="td1"></td>
+            <td id="td2"></td>
+            <td id="td3"></td>
+            <td id="td4"></td>
+            <td id="td5"><</td>
+            </tr>
+        </table>
+    </center>
+
+    <script type="text/javascript">
+
+      var xhr= new XMLHttpRequest();
+      var url1='https://iata-and-icao-codes.p.rapidapi.com/airline?iata_code='
+      var url2=prompt("Enter iata code of an airline (example of some Indian Airlines=I5,IX,AI,S2,SG,9W,6E,G8)")
+      var url3=`${url2}`
+      var url=url1+url3
+    xhr.open("GET", url);
+    xhr.setRequestHeader("x-rapidapi-host", "iata-and-icao-codes.p.rapidapi.com");
+    xhr.setRequestHeader("x-rapidapi-key", "23afcb7ce7msh54dd1061c86521cp1c66bejsn627983c745fb");
+      xhr.onreadystatechange= test
+      function test(){
+        if(this.status=200 && this.readyState==4)
+        {
+          var res_data= JSON.parse(this.responseText);
+          console.log(res_data)
+          var a = document.getElementById('td1')
+          a.innerHTML=JSON.stringify(res_data[0].alliance)
+          var a = document.getElementById('td2')
+          a.innerHTML=JSON.stringify(res_data[0].iata_code)
+          var a = document.getElementById('td3')
+          a.innerHTML=JSON.stringify(res_data[0].icao_code)
+          var a = document.getElementById('td4')
+          a.innerHTML=JSON.stringify(res_data[0].name)
+          var a = document.getElementById('td5')
+          a.innerHTML=JSON.stringify(res_data[0].website)
+        }
+      }
+        xhr.send();
+
+    </script>
+  </body>
+</html>

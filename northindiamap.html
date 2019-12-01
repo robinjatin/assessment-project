@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Map</title>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+       body{
+         background-color:black;
+       }
+       .city{
+         color:white;
+         font-size: 50px;
+       }
+       
+    </style>
+  </head>
+  <body >
+    <center><h1 class="city">Major Cities of Northern India</h1></center>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 31.1471, lng: 75.3412};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: uluru
+        });
+        var markers=[{
+          coords:{lat:30.7333, lng:76.7794},
+          content:`<h1>Chandigarh</h1>`
+        },{
+          coords:{lat:31.1048, lng: 77.1734},
+          content:`<h1>Shimla</h1>`
+        },{
+          coords:{lat:34.0837, lng: 74.7973},
+          content:`<h1>Srinagar</h1>`
+        },{
+          coords:{lat:28.6139, lng: 77.2090},
+          content:`<h1>New Delhi</h1>`
+        },{
+          coords:{lat:30.3165, lng: 78.0322},
+          content:`<h1>Dehradun</h1>`
+        }
+
+
+        ]
+      for(var x=0;x<markers.length;x++)
+      {
+        addMarker(markers[x]);
+      }
+        function addMarker(props)
+        {
+          var marker = new google.maps.Marker({
+          position: props.coords ,
+          map: map
+        });
+          if(props.content){
+              var infoWindow = new google.maps.InfoWindow({
+                content:props.content
+              });
+            }
+        marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+        })
+      }
+      }
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxmfw8Wvz1N3Y4ecRJ20zKd_hDB7CZ3kM&callback=initMap"
+    async defer>
+    </script>
+  </body>
+</html>

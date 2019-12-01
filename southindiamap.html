@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+       body{
+         background-color:black;
+       }
+       .city{
+         color:white;
+         font-size: 50px;
+       }
+    </style>
+  </head>
+  <body >
+    <center><h1 class="city">Major Cities of Southern India</h1></center>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: 13.0827, lng: 80.2707};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: uluru
+        });
+        var markers=[{
+          coords:{lat:13.0827, lng:80.2707},
+          content:`<h1>Chennai</h1>`
+        },{
+          coords:{lat:12.9716, lng: 77.5946},
+          content:`<h1>Bengaluru</h1>`
+        },{
+          coords:{lat:17.3850, lng: 78.4867},
+          content:`<h1>Hyderabad</h1>`
+        },{
+          coords:{lat:9.9312, lng: 76.2673},
+          content:`<h1>Kochi</h1>`
+        },{
+          coords:{lat:17.6868, lng: 83.2185},
+          content:`<h1>Visakhapatnam</h1>`
+        }
+
+
+        ]
+      for(var x=0;x<markers.length;x++)
+      {
+        addMarker(markers[x]);
+      }
+        function addMarker(props)
+        {
+          var marker = new google.maps.Marker({
+          position: props.coords ,
+          map: map
+        });
+          if(props.content){
+              var infoWindow = new google.maps.InfoWindow({
+                content:props.content
+              });
+            }
+        marker.addListener('click',function(){
+          infoWindow.open(map,marker);
+        })
+      }
+      }
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxmfw8Wvz1N3Y4ecRJ20zKd_hDB7CZ3kM&callback=initMap"
+    async defer>
+    </script>
+  </body>
+</html>
