@@ -50,6 +50,8 @@ h1
 
 <th>Ground Level</th>
 
+<th>Wind Speed</th>
+
  </tr>
 
 <tr>
@@ -67,6 +69,7 @@ h1
 
 <td align="center" id="td5"></td>
 
+<td align="center" id="td6"></td>
 
 </tr>
 
@@ -133,6 +136,10 @@ var b=document.getElementById('td2')
  var d = document.getElementById('td5')
 
  d.innerHTML=JSON.stringify(re_data.main.grnd_level)
+
+ var e = document.getElementById('td6')
+
+ e.innerHTML=JSON.stringify(re_data.wind.speed)
 
  }
 
