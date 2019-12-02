@@ -9,7 +9,7 @@ Tourism without proper guideline can put the life of tourist in danger. So, a gu
 * Our website is divided into 4 segments - North, South, East, West.
 * It displays information of restaurants after giving the city id(from another API) using an API.
 * It displays the current weather and location of the cities mentioned above.
-* It displays calories of the food we enter.
+* It displays macros of the food we enter.
 * It displays the Airline data after we enter its iata code.
 * It shows the map of a particular location.
 
