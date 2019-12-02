@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Zomato City Details</title>
+    <style media="screen">
+    table, th{
+
+        border: 10px blue;
+        border-style: inset;
+border-collapse: collapse;
+font-size: 50px;
+padding: 20px;
+text-align: center;
+color:rgb(256,256,256);
+font-family: cursive;
+}
+td
+{
+  border: 10px blue;
+  border-style: inset;
+border-collapse: collapse;
+font-size: 40px;
+padding: 20px;
+text-align: center;
+color:rgb(256,256,256);
+font-family: fantasy;
+}
+h1
+{
+color:white;
+font-size: 50px;
+font-family: fantasy;
+}
+tr{
+color:white;
+}
+body{
+  background-size: 1500px;
+}
+img
+{
+    height: 90px;
+    width: 160px;
+}
+
+    </style>
+  </head>
+  <body background="resta.jpg">
+    <center><h1>City Details</h1>
+      <table>
+        <tr>
+          <th>Country Id</th>
+          <th>City Id</th>
+          <th>City Name</th>
+          <th>Country Flag</th>
+          </tr>
+          <tr>
+            <td id="td1"></td>
+            <td id="td2"></td>
+            <td id="td4"></td>
+            <td ><img id='td3'></td>
+            </tr>
+        </table>
+
+<br>
+
+        <h1><a href="zomatores.html">Click here for Restaurants.</a><h1>
+
+      </center>
+
+    <script>
+      var url1='https://developers.zomato.com/api/v2.1/cities?q='
+      var url3=prompt("Enter city name")
+      var url2=`${url3}`
+      var url=url1+url2
+        var xhr= new XMLHttpRequest();
+      xhr.open("GET", url);
+xhr.setRequestHeader("user-key", "252b06a92d9c8393d8be01f278781a9d");
+      xhr.onreadystatechange= test
+      function test(){
+        if(this.status=200 && this.readyState==4)
+        {
+          var res_data= JSON.parse(this.responseText);
+          console.log(res_data)
+          var a = document.getElementById('td1')
+          a.innerHTML=JSON.stringify(res_data.location_suggestions[0].country_id)
+          var b = document.getElementById('td2')
+          b.innerHTML=JSON.stringify(res_data.location_suggestions[0].id)
+          var b = document.getElementById('td4')
+          b.innerHTML=JSON.stringify(res_data.location_suggestions[0].name)
+          var img_url= res_data.location_suggestions[0].country_flag_url;
+          var get_tag=document.getElementById('td3')
+          get_tag.setAttribute('src',img_url)
+        }
+      }
+        xhr.send();
+      </script>
+  </body>
+</html>

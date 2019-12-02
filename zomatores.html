@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style media="screen">
+    table,td{
+
+        border: 5px grey;
+        border-style: double;
+border-collapse: collapse;
+font-size: 30px;
+padding: 5px;
+text-align: center;
+color:rgb(256,256,256);
+font-family: Candara;
+}
+th
+{
+  border: 5px grey;
+  border-style: double;
+border-collapse: collapse;
+font-size: 30px;
+padding: 5px;
+text-align: center;
+color:rgb(255,215,0);
+font-family: cursive;
+}
+h1
+{
+color:lightyellow;
+font-size: 30px;
+font-family: fantasy;
+}
+tr{
+color:white;
+}
+body{
+  background-size: 1500px;
+  background-repeat: repeat;
+}
+img
+{
+    height: 90px;
+    width: 160px;
+}
+
+    </style>
+    <meta charset="utf-8">
+    <title>City Restaurant Zomato Details</title>
+  </head>
+  <body background="blackgold.jpg">
+    <center><h1>Restaurants</h1>
+      <table>
+        <tr>
+          <th>Restaurant Name</th>
+          <th>Restaurant Address</th>
+          <th>Cuisines</th>
+          <th>Featured Image</th>
+          <th>Timings</th>
+          <th>Rating</th>
+          </tr>
+          <tr>
+            <td id="td1"></td>
+            <td id="td2"></td>
+            <td id="td3"></td>
+            <td ><img id='td4'></td>
+            <td id="td5"></td>
+            <td id='td6'></td>
+            </tr>
+            <tr>
+              <td id="td7"></td>
+              <td id="td8"></td>
+              <td id="td9"></td>
+              <td ><img id='td10'></td>
+              <td id="td11"></td>
+              <td id="td12"></td>
+              </tr>
+              <tr>
+                <td id="td13"></td>
+                <td id="td14"></td>
+                <td id="td15"></td>
+                <td ><img id='td16'></td>
+                <td id="td17"></td>
+                <td id="td18"></td>
+                </tr>
+                <tr>
+                  <td id="td19"></td>
+                  <td id="td20"></td>
+                  <td id="td21"></td>
+                  <td ><img id='td22'></td>
+                  <td id="td23"></td>
+                  <td id="td24"></td>
+                  </tr>
+                  <tr>
+                    <td id="td25"></td>
+                    <td id="td26"></td>
+                    <td id="td27"></td>
+                    <td ><img id='td28'></td>
+                    <td id="td29"></td>
+                    <td id="td30"></td>
+                    </tr>
+        </table>
+        <br><br><br>
+        <h1><a href="ourfood.html">Health Conscious People Click Here.</a><h1>
+
+      </center>
+    <script>
+      var url1='https://developers.zomato.com/api/v2.1/search?entity_id='
+      var url4=prompt("Enter city id")
+      var url2=`${url4}`
+      var url3='&entity_type=city&count=5&radius=1000'
+      var url=url1+url2+url3
+        var xhr= new XMLHttpRequest();
+      xhr.open("GET", url);
+xhr.setRequestHeader("user-key", "252b06a92d9c8393d8be01f278781a9d");
+      xhr.onreadystatechange= test
+      function test(){
+        if(this.status=200 && this.readyState==4)
+        {
+          var res_data= JSON.parse(this.responseText);
+          console.log(res_data)
+
+          var a = document.getElementById('td1')
+          a.innerHTML=JSON.stringify(res_data.restaurants[0].restaurant.name)
+          var b = document.getElementById('td2')
+          b.innerHTML=JSON.stringify(res_data.restaurants[0].restaurant.location.address)
+          var c = document.getElementById('td3')
+          c.innerHTML=JSON.stringify(res_data.restaurants[0].restaurant.cuisines)
+          var img_url1= res_data.restaurants[0].restaurant.featured_image;
+          var get_tag1=document.getElementById('td4')
+          get_tag1.setAttribute('src',img_url1)
+          var d = document.getElementById('td5')
+          d.innerHTML=JSON.stringify(res_data.restaurants[0].restaurant.timings)
+          var e = document.getElementById('td6')
+          e.innerHTML=JSON.stringify(res_data.restaurants[0].restaurant.user_rating.aggregate_rating)
+
+          var f = document.getElementById('td7')
+          f.innerHTML=JSON.stringify(res_data.restaurants[1].restaurant.name)
+          var g = document.getElementById('td8')
+          g.innerHTML=JSON.stringify(res_data.restaurants[1].restaurant.location.address)
+          var h = document.getElementById('td9')
+          h.innerHTML=JSON.stringify(res_data.restaurants[1].restaurant.cuisines)
+          var img_url2= res_data.restaurants[1].restaurant.featured_image;
+          var get_tag2=document.getElementById('td10')
+          get_tag2.setAttribute('src',img_url2)
+          var i = document.getElementById('td11')
+          i.innerHTML=JSON.stringify(res_data.restaurants[1].restaurant.timings)
+          var j = document.getElementById('td12')
+          j.innerHTML=JSON.stringify(res_data.restaurants[1].restaurant.user_rating.aggregate_rating)
+
+          var k = document.getElementById('td13')
+          k.innerHTML=JSON.stringify(res_data.restaurants[2].restaurant.name)
+          var l = document.getElementById('td14')
+          l.innerHTML=JSON.stringify(res_data.restaurants[2].restaurant.location.address)
+          var m = document.getElementById('td15')
+          m.innerHTML=JSON.stringify(res_data.restaurants[2].restaurant.cuisines)
+          var img_url3= res_data.restaurants[2].restaurant.featured_image;
+          var get_tag3=document.getElementById('td16')
+          get_tag3.setAttribute('src',img_url3)
+          var n = document.getElementById('td17')
+          n.innerHTML=JSON.stringify(res_data.restaurants[2].restaurant.timings)
+          var o = document.getElementById('td18')
+          o.innerHTML=JSON.stringify(res_data.restaurants[2].restaurant.user_rating.aggregate_rating)
+
+          var p = document.getElementById('td19')
+          p.innerHTML=JSON.stringify(res_data.restaurants[3].restaurant.name)
+          var q = document.getElementById('td20')
+          q.innerHTML=JSON.stringify(res_data.restaurants[3].restaurant.location.address)
+          var r = document.getElementById('td21')
+          r.innerHTML=JSON.stringify(res_data.restaurants[3].restaurant.cuisines)
+          var img_url4= res_data.restaurants[3].restaurant.featured_image;
+          var get_tag4=document.getElementById('td22')
+          get_tag4.setAttribute('src',img_url4)
+          var s = document.getElementById('td23')
+          s.innerHTML=JSON.stringify(res_data.restaurants[3].restaurant.timings)
+          var t = document.getElementById('td24')
+          t.innerHTML=JSON.stringify(res_data.restaurants[3].restaurant.user_rating.aggregate_rating)
+
+          var u = document.getElementById('td25')
+          u.innerHTML=JSON.stringify(res_data.restaurants[4].restaurant.name)
+          var v = document.getElementById('td26')
+          v.innerHTML=JSON.stringify(res_data.restaurants[4].restaurant.location.address)
+          var w = document.getElementById('td27')
+          w.innerHTML=JSON.stringify(res_data.restaurants[4].restaurant.cuisines)
+          var img_url5= res_data.restaurants[4].restaurant.featured_image;
+          var get_tag5=document.getElementById('td28')
+          get_tag5.setAttribute('src',img_url5)
+          var x = document.getElementById('td29')
+          x.innerHTML=JSON.stringify(res_data.restaurants[4].restaurant.timings)
+          var y = document.getElementById('td30')
+          y.innerHTML=JSON.stringify(res_data.restaurants[4].restaurant.user_rating.aggregate_rating)
+        }
+      }
+        xhr.send();
+      </script>
+  </body>
+</html>
