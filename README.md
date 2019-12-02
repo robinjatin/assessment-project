@@ -2,7 +2,7 @@ Tourism of India website:
 
 Problem Statement:
 
-Tourism without proper guideline can put the life of tourist in danger. So, a guide is required for guiding tourist during their journey. Internet and GPS solve this problem by providing free applications that provide all required information to tourist. Technology and software used in the tourism industry of Kingdom of Saudi Arabia are playing a vital role in the tourism and hospitality industry of India.
+Tourism without proper guideline can put the life of tourist in danger. So, a guide is required for guiding tourist during their journey. Internet and GPS solve this problem by providing free applications that provide all required information to tourist. Technology and software used in the tourism industry of India are playing a vital role in the tourism and hospitality industry of India.
 
 Features:
 
