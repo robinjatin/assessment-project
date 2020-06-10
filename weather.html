@@ -28,7 +28,7 @@ h1
 
  </head>
 
-<body  background="movcloud.gif">
+<body background="movcloud.gif">
        <img id="image">
 
      <div id="Num">
@@ -48,7 +48,7 @@ h1
 
  <th>Humidity<br>(%)</th>
 
-<th>Ground Level</th>
+<th>UV Index</th>
 
 <th>Wind Speed</th>
 
@@ -83,63 +83,56 @@ h1
  <script>
 
   //Template Literals
+  var xhr = new XMLHttpRequest()
+ var name1="http://api.weatherstack.com/current?access_key=edc2a6335de83dac279ee322c021829a&query=";
+ var name2=prompt("enter city name");
+ var url=name1+name2;
+//  var lat=prompt("Enter latitude");
+//  var vich="&lon=";
+//  var long=prompt("Enter longitude");
+//  var url = name1+lat+vich+long;
 
- var name ='http://api.openweathermap.org/data/2.5/weather?q=';
-
-     var name2 ='&units=metric&appid=1285bbb78a338ad8c43733bba194610a';
-
-  var name3=prompt("Enter City Name");
-
-var name1=`${name3}`
-
- var url = name+name1+name2;
-
-
-
- var xhr = new XMLHttpRequest()
 // there is establish connection bw serber and client
-
-
- xhr.open('GET',url)
+xhr.open("GET",url);
 
 xhr.onreadystatechange = test
 
   function test(){
-
 if(this.status==200 && this.readyState==4)
 { //to remove exception
 
   var re_data = JSON.parse(this.responseText)
 
-console.log(re_data)
+console.log(re_data);
 
  var a= document.getElementById('td0')
 
-     a.innerHTML=JSON.stringify(re_data.name)
+     a.innerHTML=(re_data.location.name)
 
   var e = document.getElementById('td1')
 
-   e.innerHTML=JSON.stringify(re_data.main.temp);
+   e.innerHTML=(re_data.current.temperature);
 
 var b=document.getElementById('td2')
 
- b.innerHTML=JSON.stringify(re_data.weather[0].description)
+ b.innerHTML=(re_data.current.weather_descriptions[0])
 
  var pre=document.getElementById('td3')
 
- pre.innerHTML=JSON.stringify(re_data.main.pressure)
+ pre.innerHTML=(re_data.current.pressure)
 
  var c=document.getElementById('td4')
 
- c.innerHTML=JSON.stringify(re_data.main.humidity)
+ c.innerHTML=(re_data.current.humidity)
 
  var d = document.getElementById('td5')
 
- d.innerHTML=JSON.stringify(re_data.main.grnd_level)
+ d.innerHTML=(re_data.current.uv_index)
 
  var e = document.getElementById('td6')
 
- e.innerHTML=JSON.stringify(re_data.wind.speed)
+ e.innerHTML=(re_data.current.wind_speed)
+
 
  }
 
